@@ -27,7 +27,7 @@ jobs:
       - name: Set up Android SDK
         uses: android-actions/setup-android@v3
         with:
-          packages: ''   # 跳过默认的 "tools"，避免 "Failed to find package 'tools'"
+          packages: ''
 
       - name: Install Android 34 SDK packages
         run: |
@@ -46,7 +46,7 @@ jobs:
         working-directory: project
         run: |
           chmod +x ./gradlew
-          ./gradlew --no-daemon --stacktrace :app:assembleDebug
+          ./gradlew --no-daemon --refresh-dependencies --stacktrace :app:assembleDebug
 
       - name: Upload APK artifact
         uses: actions/upload-artifact@v4
